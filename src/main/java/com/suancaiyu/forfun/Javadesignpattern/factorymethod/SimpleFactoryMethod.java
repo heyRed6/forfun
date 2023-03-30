@@ -16,11 +16,20 @@ public class SimpleFactoryMethod {
         }
     }
 
-    public static void main(String[] args) {
+    public static Car getCar1(Class<? extends Car> clazz) throws InstantiationException, IllegalAccessException {
+        if (clazz !=null){
+            return clazz.newInstance();
+        }
+        return null;
+    }
+
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException {
         //获取对应的对象
         String bwm = SimpleFactoryMethod.getCar("bwm").save();
+        String bwm1 = SimpleFactoryMethod.getCar1(Benzi.class).save();
         String benzi = SimpleFactoryMethod.getCar("benzi").save();
         System.out.println(bwm);
+        System.out.println(bwm1);
         System.out.println(benzi);
     }
 }
